@@ -1,0 +1,29 @@
+Sample Candidate Interview Process Information Application
+
+Create an application using Angular which will keep the basic information of candidates that are interviewed or going to be interviewed in the company.
+
+Create a Add Candidate Page with a form which includes Name, Address, Resume (file), phone number, email etc. fields with basic validations and a submit button which will do a post request to backend. (Concepts covered - Components, Directives, String interpolation, Property binding, Event bindings, Life cycle hooks, Http requests)
+
+Create a Candidate Overview Page with a Grid which shows the candidate basic details in a table. (Concepts covered - Services, Dependency injection, Observables, Promises,  )
+
+The last column of the grid will contain two links (Edit & Delete):-
+	To edit the candidate details page
+	To delete the row
+
+Create Edit Candidate Page which will allow user to edit the existing candidate details(navigate from grid to edit page) (Concepts Covered - Routing, different ways of passing parameters to a page,)
+
+Delete a row - On clicking on delete link, the confirmation popup should be displayed. Message - "Are you sure you want to delete the candidate information ?"
+
+Filter in the grid page - Add some basic filters in the grid page which will filter the grid based on the value entered in the filter fields. (eg. We can add filter for Name, location, year of experience, etc.)
+
+Users with different claims or roles - Only user with role Admin should be able to add the candidate (the role can be hardcoded) other users will be redirected to Page not found (Interceptors, Route Guards )
+
+Page Not found - If the user is trying to navigate to a page which doesn't exist then it should be redirected to Page not found 
+
+
+
+
+
+
+
+
