@@ -1,0 +1,126 @@
+<section class="content-wrapper">
+  <section class="content-section">
+    <div class="row">
+      <div class="col-12 col-md-12 col-lg-12 col-sm-12">
+        <div class="p-3 header-section-wrapper">
+          <button class="btn btn-secondary" (click)="onCanle()">
+            <i class="fal fa-less-than"></i>
+            BACK TO OVERVIEW
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>
+
+<form [formGroup]="form">
+  <section class="candidate-wrapper">
+    <section class="content-section">
+      <div class="row form-fields">
+        <div class="form">
+          <div class="form-fields-wrapper row singleSelectDropdown">
+            <div class="col-md-12">
+              <div class="row">
+                <div class="col col-sm-2 col-md-2 col-lg-2 col-2">
+                  <div class="form-group focus input-wrapper-box">
+                    <div class="inputText">
+                      Candidate Name:
+                      <span class="mandatory_mark">*</span>
+                    </div>
+                    <div *ngIf="f['name'].touched && f['name'].invalid" class="alert alert-danger">
+                      <div *ngIf="f.name.errors?.required">Candidate name is required.</div>
+                    </div>
+                    <input type="text" name="name" id="name" class="form-input form-control input ps-2"
+                      placeholder="Candidate name" formControlName="name"/>
+                  </div>
+                </div>
+                <div class="col col-sm-3 col-md-3 col-lg-3 col-3">
+                  <div class="form-group focus input-wrapper-box">
+                    <div class="inputText">
+                      Address:
+                      <span class="mandatory_mark">*</span>
+                    </div>
+                    <div *ngIf="f.address.touched && f.address.invalid" class="alert alert-danger">
+                      <div *ngIf="f.address.errors?.required">Address is required.</div>
+                    </div>
+                    <input type="text" name="address" id="address" class="form-input form-control input ps-2"
+                      placeholder="Address" formControlName="address"/>
+                  </div>
+                </div>
+                <div class="col col-sm-2 col-md-2 col-lg-2 col-2">
+                  <div class="form-group focus input-wrapper-box">
+                    <div class="inputText">
+                      Mobile No:
+                      <span class="mandatory_mark">*</span>
+                    </div>
+                    <div *ngIf="f.mobile.touched && f.mobile.invalid" class="alert alert-danger">
+                      <div *ngIf="f.mobile.errors?.required">Mobile Number is required.</div>
+                      <div *ngIf="f.mobile.errors?.pattern">Please, Enter 10 digit Mobile Number.</div>
+                    </div>
+                    <input type="text" name="mobile" id="mobile" class="form-input form-control input ps-2"
+                      placeholder="Mobile No" formControlName="mobile" (keypress)="numberOnly($event)"/>
+                  </div>
+                </div>
+                <div class="col col-sm-2 col-md-2 col-lg-2 col-2">
+                  <div class="form-group focus input-wrapper-box">
+                    <div class="inputText">
+                      Email:
+                      <span class="mandatory_mark">*</span>
+                    </div>
+                    <div *ngIf="f.email.touched && f.email.invalid" class="alert alert-danger">
+                      <div *ngIf="f.email.errors?.required">Email ID is required.</div>
+                    </div>
+                    <input type="email" name="email" id="email" class="form-input form-control input ps-2"
+                      placeholder="Email ID" formControlName="email"/>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col col-sm-2 col-md-2 col-lg-2 col-2">
+                  <div class="form-group focus input-wrapper-box">
+                    <div class="inputText">
+                      Resume:
+                      <span class="mandatory_mark">*</span>
+                    </div>
+                    <ngx-dropzone
+                      #drop
+                      class="hidden"
+                      (change)="onFileSelect($event)"
+                      [accept]="'.pdf,.doc,.docx'"
+                      [maxFileSize]="104857600"
+                      [multiple]="false">
+                    </ngx-dropzone>
+                    <button class="btn btn-primary" (click)="drop.showFileSelector()"
+                      [disabled]="files.length==1">
+                      Select file
+                    </button>
+                  </div>
+                </div>
+                <div class="col col-sm-4 col-md-4 col-lg-4 col-4">
+                  <!-- <div *ngIf="files.length==0">Resume is required.</div> -->
+                  <div class="alert_progress" *ngFor="let item of files">
+                    <span class="file_name_txt">
+                      {{item.name}}
+                    </span>
+                    <button type="button" class="btn-close" (click)="onFileRemove(item)">
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col col-sm-6 col-md-6 col-lg-6 col-6">
+                  <button type="submit" class="btn btn-success" (click)="onSubmit();">
+                    Save
+                  </button>
+                  <button type="button" class="btn btn-danger m-2" (click)="onCanle()">
+                    Cancle
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </section>
+</form>
